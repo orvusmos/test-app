@@ -38,7 +38,7 @@
                 computation = prev * current;
                 break;
             case '/':
-                computation = current === 0 ? 'Error' : prev / current;
+                computation = current === 0 ? 'Div by 0 Error' : prev / current;
                 break;
             default:
                 return;
@@ -57,16 +57,12 @@
     const deleteNumber = () => {
         currentInput = currentInput.slice(0, -1);
     };
-
-    const updateDisplay = (): string => {
-        return currentInput || previousInput || '0';
-    };
 </script>
 
 <div class="flex flex-col w-full h-fit p-4 gap-4">
     <h1>Calculator</h1>
+    <div>currentInput= {currentInput} {operator} previousInput={previousInput}</div>
     <Input class="w-full" bind:value={currentInput}/>
-    <div>{updateDisplay()}</div>
     <div class="grid grid-cols-4 gap-4">
         <Button on:click={clear}>AC</Button>
         <Button on:click={deleteNumber}>DEL</Button>
